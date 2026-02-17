@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Calculationconsole/CVForm.Designer.cs
+/Calculationconsole/CVForm.cs

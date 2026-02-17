@@ -38,6 +38,10 @@
             this.Subtraction = new System.Windows.Forms.Button();
             this.Multiplication = new System.Windows.Forms.Button();
             this.Division = new System.Windows.Forms.Button();
+            this.statecomboBox = new System.Windows.Forms.ComboBox();
+            this.CountrycomboBox = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // firstnumber
@@ -140,11 +144,55 @@
             this.Division.UseVisualStyleBackColor = false;
             this.Division.Click += new System.EventHandler(this.Division_Click);
             // 
+            // statecomboBox
+            // 
+            this.statecomboBox.FormattingEnabled = true;
+            this.statecomboBox.Location = new System.Drawing.Point(230, 342);
+            this.statecomboBox.Name = "statecomboBox";
+            this.statecomboBox.Size = new System.Drawing.Size(181, 28);
+            this.statecomboBox.TabIndex = 13;
+            this.statecomboBox.SelectedIndexChanged += new System.EventHandler(this.statecomboBox_SelectedIndexChanged);
+            // 
+            // CountrycomboBox
+            // 
+            this.CountrycomboBox.FormattingEnabled = true;
+            this.CountrycomboBox.Items.AddRange(new object[] {
+            "India",
+            "USA",
+            "Australia"});
+            this.CountrycomboBox.Location = new System.Drawing.Point(230, 293);
+            this.CountrycomboBox.Name = "CountrycomboBox";
+            this.CountrycomboBox.Size = new System.Drawing.Size(181, 28);
+            this.CountrycomboBox.TabIndex = 14;
+            this.CountrycomboBox.SelectedIndexChanged += new System.EventHandler(this.CountrycomboBox_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(51, 296);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(110, 20);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Country Name";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(51, 345);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(94, 20);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "State Name";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.CountrycomboBox);
+            this.Controls.Add(this.statecomboBox);
             this.Controls.Add(this.Division);
             this.Controls.Add(this.Multiplication);
             this.Controls.Add(this.Subtraction);
@@ -175,6 +223,10 @@
         private System.Windows.Forms.Button Subtraction;
         private System.Windows.Forms.Button Multiplication;
         private System.Windows.Forms.Button Division;
+        private System.Windows.Forms.ComboBox statecomboBox;
+        private System.Windows.Forms.ComboBox CountrycomboBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 

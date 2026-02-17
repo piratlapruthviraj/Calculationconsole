@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Calculationconsole
 {
@@ -15,6 +16,7 @@ namespace Calculationconsole
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -101,6 +103,30 @@ namespace Calculationconsole
             else
             {
 
+            }
+        }
+
+        private void statecomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CountrycomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Dictionary<string, List<string>> countrystates = new Dictionary<string, List<string>>()
+            {
+                { "India", new List<string> { "Andhra Pradesh", "Telangana", "Maharashtra"}},
+                { "USA", new List<string> { "Canada", "Washing Ton", "Florida"}},
+                { "Australia", new List<string> { "Sydney", "Perth", "Melbourne"}},
+            };
+
+            string selectedCountry = CountrycomboBox.SelectedItem.ToString();
+            statecomboBox.Items.Clear();
+            statecomboBox.Text = "";
+
+            if(countrystates.ContainsKey(selectedCountry))
+            {
+                statecomboBox.Items.AddRange(countrystates[selectedCountry].ToArray());
             }
         }
     }

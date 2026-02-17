@@ -16,7 +16,9 @@ namespace Calculationconsole
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.Run(new Form1());
+            //Application.Run(new Grammar());
+            Application.Run(new CVForm());
         }
     }
 }
