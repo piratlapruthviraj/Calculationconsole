@@ -42,7 +42,7 @@ namespace Calculationconsole
             }
             using (SqlConnection con = new SqlConnection(conString))
             {
-                string sql = "SELECT DEPARTMENTNAME, DEPARTMENTSTATUS FROM dbo.Department";
+                string sql = "SELECT DEPARTMENTNAME, DEPARTMENTSTATUS AS STATUS FROM dbo.Department";
                 SqlDataAdapter da = new SqlDataAdapter(sql, con);
 
                 DataTable dt = new DataTable();
@@ -51,9 +51,12 @@ namespace Calculationconsole
                 comboBox4.DisplayMember = "DEPARTMENTNAME";
                 comboBox4.ValueMember = "DPTID";
                 comboBox4.DataSource = dt;
-                dataGridView1.Columns[0].Width = 300;
-                dataGridView1.Columns[1].Width = 300;
             }
+            dataGridView1.Columns[0].Width = 300;
+            dataGridView1.Columns[1].Width = 260;
+            dataGridView2.Columns[1].Width = 150;
+            dataGridView2.Columns[2].Width = 150;
+            dataGridView2.Columns[6].Width = 300;
         }
 
         private void toolStripComboBox1_Click(object sender, EventArgs e)
@@ -73,8 +76,7 @@ namespace Calculationconsole
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridView1.Columns[0].Width = 300;
-            dataGridView1.Columns[1].Width = 300;
+
         }
 
         private void label14_Click(object sender, EventArgs e)
@@ -149,5 +151,7 @@ namespace Calculationconsole
         {
            
         }
+
+
     }
 }
