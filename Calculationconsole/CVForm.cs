@@ -28,6 +28,32 @@ namespace Calculationconsole
         {
             dataGridView1.AllowUserToAddRows = false;
             dataGridView2.AllowUserToAddRows = false;
+            string conString = ConfigurationManager.ConnectionStrings["MyDb"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                string sql = "SELECT Prefix, FullName, Title, DPT.DEPARTMENTNAME, CAST(Hiredate AS DATE) Hiredate, MobilePhone, Email, Address " +
+                    "FROM dbo.EMPLOYEE EMP(NOLOCK), dbo.DEPARTMENT DPT(NOLOCK) " +
+                    "WHERE EMP.DPTID = DPT.DPTID";
+                SqlDataAdapter da = new SqlDataAdapter(sql, con);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView2.DataSource = dt;
+            }
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                string sql = "SELECT DEPARTMENTNAME, DEPARTMENTSTATUS FROM dbo.Department";
+                SqlDataAdapter da = new SqlDataAdapter(sql, con);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+                comboBox4.DisplayMember = "DEPARTMENTNAME";
+                comboBox4.ValueMember = "DPTID";
+                comboBox4.DataSource = dt;
+                dataGridView1.Columns[0].Width = 300;
+                dataGridView1.Columns[1].Width = 300;
+            }
         }
 
         private void toolStripComboBox1_Click(object sender, EventArgs e)
@@ -47,7 +73,8 @@ namespace Calculationconsole
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-        
+            dataGridView1.Columns[0].Width = 300;
+            dataGridView1.Columns[1].Width = 300;
         }
 
         private void label14_Click(object sender, EventArgs e)
@@ -70,14 +97,14 @@ namespace Calculationconsole
                 return;
             }
 
-            string conString = ConfigurationManager.ConnectionStrings["MyDb"].ConnecationString;
+            string conString = ConfigurationManager.ConnectionStrings["MyDb"].ConnectionString;
             using (SqlConnection con = new SqlConnection(conString))
             {
                 string sql = @"INSERT INTO dbo.EMPLOYEE (FIRSTNAME, LASTNAME, FULLNAME, BIRTHDATE, TITLE, PREFIX,
-                                ADDRESS, CITY, STATE, ZIPCODE, HOMEPHONE, MOBILEPHONE, EMAIL, SKYPE, HIREDATE) 
+                                ADDRESS, CITY, STATE, ZIPCODE, HOMEPHONE, MOBILEPHONE, EMAIL, SKYPE, HIREDATE, DPTID) 
                                 VALUES
                                 (@FirstName, @LastName, @FullName, @BirthDate, @Title, @prefix,
-                                 @Address, @city, @state, @ZipCode, @HomePhone, @MobilePhone, @Email, @Skype, @HireDate)";
+                                 @Address, @city, @state, @ZipCode, @HomePhone, @MobilePhone, @Email, @Skype, @HireDate, DPTID)";
 
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
@@ -102,6 +129,8 @@ namespace Calculationconsole
                         con.Open();
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Employee Record Inserted SuccessFully.");
+                        CVForm_Load(sender, e);
+
                     }
                     catch(Exception ex)
                     {
@@ -114,6 +143,11 @@ namespace Calculationconsole
         private void Cancel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }
