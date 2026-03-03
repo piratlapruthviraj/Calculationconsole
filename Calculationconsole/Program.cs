@@ -18,7 +18,8 @@ namespace Calculationconsole
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
             //Application.Run(new Grammar());
-            Application.Run(new CVForm());
+            //Application.Run(new CVForm());
+            Application.Run(new MDIParent1());
         }
     }
 }
